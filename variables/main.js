@@ -18,7 +18,6 @@ for (let key in array) {
     n++;
 }
 average = average / n;
-
 console.log(average);
 // Задача 3
 
