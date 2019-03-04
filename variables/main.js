@@ -22,4 +22,5 @@ console.log(average);
 // Задача 3
 
 let name = "Иван";
-console.log("Привет, мир! Меня зовут " + name + ".");
+let message = `Привет, мир! Меня зовут ${name}.`
+console.log(message);
