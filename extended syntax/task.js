@@ -10,10 +10,10 @@ function calculateQuadraticEquation() {
 
 function getResult(a, b, c) {
     let x, x1, x2;
-    let D = b ^ 2 + 4 * a * c;
+    let D = b ** 2 + 4 * a * c;
     if (D < 0) {
         console.log("Дискриминант меньше 0! Корней нет!")
-        return;
+        return null;
     } else if (D > 0) {
         x = [];
         x.push((-b + Math.sqrt(D)) / (2 * a))
