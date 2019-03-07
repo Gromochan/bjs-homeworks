@@ -8,20 +8,29 @@ function calculateQuadraticEquation() {
     span.textContent = "х = " + result;
 }
 
+
 function getResult(a, b, c) {
-    let x, x1, x2;
+    let x1, x2;
     let D = b ** 2 + 4 * a * c;
     if (D < 0) {
         console.log("Дискриминант меньше 0! Корней нет!")
-        return null;
+        return {
+            D: D
+        };
     } else if (D > 0) {
-        x = [];
-        x.push((-b + Math.sqrt(D)) / (2 * a))
-        x.push((-b - Math.sqrt(D)) / (2 * a))
-        return x;
+        x1 = ((-b + Math.sqrt(D)) / (2 * a))
+        x2 = ((-b - Math.sqrt(D)) / (2 * a))
+        return {
+            x1: x1,
+            x2: x2,
+            D: D
+        };
     } else if (D = 0) {
-        x = -b / (2 * a)
-        return x;
+        x1 = -b / (2 * a)
+        return {
+            x1: x1,
+            D: D
+        };;
     }
 }
 
