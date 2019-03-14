@@ -45,22 +45,25 @@ showSolutionsMessage(3, -18, 27);
 
 // Задача 2
 
-let names = {
-    firstName: "Эмильо",
-    lastName: "Родриго"
-}
+let names = {}
 let secretData = {
-    aaa: 0,
+    aaa: 1,
     bbb: 1
 }
 
 function getPersonData(secretData) {
-    names.firstName =
-        for (key in secretData) {
-            if (secretData[key] == 0) {
-
-            } else if (secretData[key] == 1)
-        }
+    if (secretData.aaa == 0) {
+        names.firstName = "Эмильо"
+    } else if (secretData.aaa == 1) {
+        names.firstName = "Родриго"
+    }
+    if (secretData.bbb == 0) {
+        names.lastName = "Эмильо"
+    } else if (secretData.bbb == 1) {
+        names.lastName = "Родриго"
+    }
+    console.log(names)
+    return
 }
 getPersonData(secretData);
 
