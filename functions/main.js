@@ -49,7 +49,53 @@ let names = {
     firstName: "Эмильо",
     lastName: "Родриго"
 }
+let secretData = {
+    aaa: 0,
+    bbb: 1
+}
 
 function getPersonData(secretData) {
+    names.firstName =
+        for (key in secretData) {
+            if (secretData[key] == 0) {
 
+            } else if (secretData[key] == 1)
+        }
 }
+getPersonData(secretData);
+
+// Задача 3
+let data = {
+    algebra: [2, 4, 5, 2, 3, 4],
+    geometry: [2, 4, 5],
+    russian: [3, 3, 4, 5],
+    phycics: [5, 5],
+    music: [2, 2, 6],
+    english: [4, 4, 6],
+    poetry: [5, 3, 4],
+    chemestry: [2],
+    french: [4, 4]
+};
+
+function getAverageScore(data) {
+
+    let average = {};
+    for (key in data) {
+        average[key] = data[key].reduce(function (currentElement, index, allElements) {
+            let sum = 0;
+            for (let i = 0; i < data[key].length; i++) {
+                sum += data[key][i];
+
+            }
+            sum = sum / data[key].length;
+            return sum;
+        });
+    }
+    let sum = 0
+    for (key in average) {
+        sum += average[key]
+    }
+    average.average = sum / Object.keys(average).length;
+    console.log(average);
+}
+getAverageScore(data);
