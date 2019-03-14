@@ -88,7 +88,6 @@ function getAverageScore(data) {
             let sum = 0;
             for (let i = 0; i < data[key].length; i++) {
                 sum += data[key][i];
-
             }
             sum = sum / data[key].length;
             return sum;
