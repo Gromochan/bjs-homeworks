@@ -68,30 +68,26 @@ let code = {
 getPersonData(code);
 
 // Задача 3
-function disciplineAverage(object) {
-    for (key in object) {
-        object[key] = getAverage(object[key]);
-    }
-    return object;
-}
+
 
 function getAverage(array) {
     let sum = 0;
     for (let i = 0; i < array.length; i++) {
         sum += array[i];
+
     }
     sum = sum / array.length;
     return sum;
 }
 
-function objectDestroyer(object) {
-    let array = []
-    for (key in object) {
-        array.push(object[key]);
+function getTotalAverage(result) {
+    let average = []
+    for (key in result) {
+        average.push(result[key]);
     }
-    return array;
+    average = getAverage(average);
+    return average;
 }
-
 
 function digitalJournal() {
     let data = {
@@ -105,10 +101,12 @@ function digitalJournal() {
         chemestry: [2],
         french: [4, 4]
     };
-
-    data.average = getAverage(objectDestroyer(disciplineAverage(data)));
-    console.log(data);
-
-
+    let result = {}
+    for (key in data) {
+        result[key] = getAverage(data[key]);
+    }
+    result.average = getTotalAverage(result);
+    console.log(result);
 }
-digitalJournal();
+
+digitalJournal()
