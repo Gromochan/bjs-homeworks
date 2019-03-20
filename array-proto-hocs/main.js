@@ -12,14 +12,31 @@ function compareArrays(array1, array2) {
     return false;
 }
 
-function summ() {
-    for (let i = 0; i < array1.length; i++) {
-        compareArrays(results[i].args, Array.from(arguments).join(', '))
-    }
+function summ(a, b) {
+    let e = a + b;
+    results.push({
+        args: [a, b],
+        result: [e]
+    })
 }
 
 function memorize(fn, limit) {
-    let results = []
+    const results = [];
+    return function workingHorse() {
+        for (let i = 0; i < results.length; i++) {
+            if (compareArrays(results[i].args, Array.from(arguments).join(', '))) {
+                console.log("Такие данные уже были!")
+                return results[i].result
+            }
+            results.push({
+                args: [a, b],
+                result: [a + b]
+            });
+            if (results.length > limit) {
+                delete results[0];
+            }
 
-    return summ
+        }
+    }
 }
+memorize(summ(3, 5), 10)
