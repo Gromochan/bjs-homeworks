@@ -1,16 +1,8 @@
-const summ = (a, b) => {
-    return {
-        args: [a, b],
-        result: [a + b]
-    }
-}
+const summ = (a, b) => a + b;
 const mSumm = memoize(summ(3, 5), 10);
-
 
 function memoize(fn, limit) {
     const results = [];
-    results.push(fn);
-    console.log(results);
     return function workingHorse() {
         for (let i = 0; i < results.length; i++) {
             if (compareArrays(results[i].args, Array.from(arguments).join(', '))) {
