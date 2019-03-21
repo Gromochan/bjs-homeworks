@@ -41,9 +41,10 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    if (name == null || name.some(!" ") || name == undefined) {
+    if (name == 'null' || name.length == 0 || name == 'undefined') {
         name = "Аноним"
     }
+    console.log(name);
     let greeting = `Привет мир! Меня зовут ${name}`
     return greeting;
 }
