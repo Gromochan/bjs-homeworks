@@ -9,11 +9,28 @@ function calculateMortgage() {
     span.textContent = result;
 }
 
+function getDateInMonth(date) {
+    return (date.getMonth() + 1) + (date.getFullYear() * 12)
+}
+
 function calculateTotalMortgage(percent, contribution, amount, date) {
     "use strict";
-    console.log(date, amount, contribution, percent)
-
-    //return totalAmount;
+    percent = parseFloat(percent);
+    contribution = parseInt(contribution);
+    amount = parseFloat(amount);
+    if (isNaN(percent) || isNaN(contribution) || isNaN(amount)) {
+        return "Мы принимаем только числовые значения!"
+    }
+    let today = new Date();
+    today = getDateInMonth(today);
+    date = new Date(date);
+    date = getDateInMonth(date);
+    let n = date - today;
+    let credit = amount - contribution;
+    let p = percent / 12;
+    let monthlyPay = credit * (p + p / (((1 + p) ** n) - 1));
+    let totalAmount = monthlyPay * n;
+    return totalAmount;
 }
 
 function sayHello() {
@@ -24,6 +41,9 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    // ??? ??? ?????? ?2 ?????? ?????
-    //return greeting;
+    if (name == null || name.some(!" ") || name == undefined) {
+        name = "Аноним"
+    }
+    let greeting = `Привет мир! Меня зовут ${name}`
+    return greeting;
 }
