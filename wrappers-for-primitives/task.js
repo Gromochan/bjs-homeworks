@@ -44,6 +44,7 @@ function getGreeting(name) {
     if (name == 'null' || name.length == 0 || name == 'undefined') {
         name = "Аноним"
     }
+    // Проблема с проверкой через .length - можно понаставить пробелов и этим все сломать. Можно было бы попробовать размить строку по символам в массив и провести проверку через .some, но мне кажется, что это уже черезчур. 
     console.log(name);
     let greeting = `Привет мир! Меня зовут ${name}`
     return greeting;
