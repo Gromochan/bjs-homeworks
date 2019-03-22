@@ -1,6 +1,6 @@
 setAlarm = (time, callback) => {
     console.log(time);
-    setDailyRhythm(time, "23:50", "07:15")
+    setDailyRhythm(time, "23:50", "7:15")
 }
 whatTime = () => {
     let time = new Date();
