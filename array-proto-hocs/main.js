@@ -18,7 +18,6 @@ function memoize(fn, limit) {
     const results = [];
     return function (a, b) {
         for (let i = 0; i < results.length; i++) {
-            console.log(Array.from(arguments))
             if (compareArrays(results[i].args, Array.from(arguments))) {
                 console.log("Такие данные уже были!")
                 return results[i].result
