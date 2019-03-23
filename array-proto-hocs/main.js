@@ -1,26 +1,5 @@
 const summ = (a, b) => a + b;
-const mSumm = memoize(summ(3, 5), 10);
-
-function memoize(fn, limit) {
-    const results = [];
-    return function workingHorse() {
-        for (let i = 0; i < results.length; i++) {
-            if (compareArrays(results[i].args, Array.from(arguments).join(', '))) {
-                console.log("Такие данные уже были!")
-                return results[i].result
-            }
-            results.push({
-                args: [a, b],
-                result: [a + b]
-            });
-            console.log(results);
-            if (results.length > limit) {
-                delete results[0];
-            }
-
-        }
-    }
-}
+const mSumm = memoize(summ, 10);
 
 function compareArrays(array1, array2) {
     if (array1.length == array2.length) {
@@ -29,8 +8,51 @@ function compareArrays(array1, array2) {
                 return false;
             }
         }
-        console.log("All good")
         return true;
     }
     return false;
 }
+
+function memoize(fn, limit) {
+    let e = fn(3, 5)
+    const results = [];
+    return function (a, b) {
+        for (let i = 0; i < results.length; i++) {
+            console.log(Array.from(arguments))
+            if (compareArrays(results[i].args, Array.from(arguments))) {
+                console.log("Такие данные уже были!")
+                return results[i].result
+            }
+        }
+
+        results.push({
+            args: [a, b],
+            result: e
+        });
+        console.log(limit);
+        console.log(results.length);
+        if (results.length > limit) {
+            console.log("Слишком много результатов!")
+            results.shift();
+        }
+        return results;
+    }
+}
+mSumm(5, 3)
+mSumm(6, 3)
+mSumm(7, 3)
+mSumm(8, 6)
+mSumm(9, 6)
+mSumm(51, 3)
+mSumm(52, 3)
+mSumm(76, 3)
+mSumm(46, 3)
+mSumm(54, 6)
+mSumm(56, 6)
+mSumm(510, 3)
+mSumm(525, 3)
+mSumm(614, 3)
+mSumm(6, 3)
+mSumm(5, 6)
+mSumm(5, 6)
+mSumm(5, 3)
