@@ -1,7 +1,7 @@
 class StudentLog {
     constructor(name) {
         this.name = name;
-        this.subject = {};
+        this.subjects = {};
     }
     getName() {
         return this.name;
@@ -10,36 +10,46 @@ class StudentLog {
         if (grade > 5 || grade < 0 || typeof grade !== "number") {
             return "Оценка должна быть от 1 до 5!"
         };
-        if (this.subject[subject] !== undefined) {
-            this.subject[subject].push(grade);
+        if (this.subjects[subject] !== undefined) {
+            this.subjects[subject].push(grade);
         } else {
-            this.subject[subject] = [];
-            this.subject[subject].push(grade);
+            this.subjects[subject] = [];
+            this.subjects[subject].push(grade);
         }
-        console.log(this.subject[subject].length);
+        console.log(this.subjects[subject].length);
         return
     }
     getAverageBySubject(subject) {
         let sum = 0;
-        for (let i = 0; this.subject[subject].length > i; i++) {
-            sum += this.subject[subject][i];
+        for (let i = 0; this.subjects[subject].length > i; i++) {
+            sum += this.subjects[subject][i];
 
         }
-        sum = sum / this.subject[subject].length;
+        sum = sum / this.subjects[subject].length;
 
         return sum
     }
     getTotalAverage(fn) {
         let i = 0;
         let sum = 0;
-        console.log(this.subject)
-        for (let key in this.subject) {
-            console.log(this.subject[key])
+
+        for (let key in this.subjects) {
+            console.log(this.subjects[key])
             sum += fn(key);
             i++;
         }
         sum = sum / i;
         return sum
+    }
+    getGradesBySubject(subject) {
+        if (this.subjects[subject] === undefined) {
+            return []
+        }
+        console.log(this.subjects[subject]);
+        return this.subjects[subject]
+    }
+    getGrades() {
+        return this.subjects
     }
 
 }
@@ -53,3 +63,5 @@ log.addGrade(4, "History");
 log.addGrade(3, "History");
 log.getAverageBySubject("chemestry");
 log.getTotalAverage(log.getAverageBySubject.bind(log));
+log.getGradesBySubject("chemes");
+log.getGrades();
