@@ -16,16 +16,17 @@ function compareArrays(array1, array2) {
 function memoize(fn, limit) {
     let e = fn(3, 5)
     const results = [];
-    return function (a, b) {
+    return function (a, b, comFn) {
         for (let i = 0; i < results.length; i++) {
-            if (compareArrays(results[i].args, Array.from(arguments))) {
+            console.log(comFn(results[i].args, Array.from(arguments)));
+            if (comFn(results[i].args, Array.from(arguments))) {
                 console.log("Такие данные уже были!")
                 return results[i].result
             }
         }
 
         results.push({
-            args: [a, b],
+            args: arguments,
             result: e
         });
         console.log(limit);
@@ -37,21 +38,21 @@ function memoize(fn, limit) {
         return results;
     }
 }
-mSumm(5, 3)
-mSumm(6, 3)
-mSumm(7, 3)
-mSumm(8, 6)
-mSumm(9, 6)
-mSumm(51, 3)
-mSumm(52, 3)
-mSumm(76, 3)
-mSumm(46, 3)
-mSumm(54, 6)
-mSumm(56, 6)
-mSumm(510, 3)
-mSumm(525, 3)
-mSumm(614, 3)
-mSumm(6, 3)
-mSumm(5, 6)
-mSumm(5, 6)
-mSumm(5, 3)
+mSumm(5, 3, compareArrays)
+mSumm(5, 3, compareArrays)
+mSumm(5, 3, compareArrays)
+mSumm(8, 6, compareArrays)
+mSumm(9, 6, compareArrays)
+mSumm(51, 5, compareArrays)
+mSumm(52, 3, compareArrays)
+mSumm(76, 3, compareArrays)
+mSumm(46, 3, compareArrays)
+mSumm(54, 6, compareArrays)
+mSumm(56, 6, compareArrays)
+mSumm(510, 3, compareArrays)
+mSumm(525, 3, compareArrays)
+mSumm(614, 3, compareArrays)
+mSumm(6, 3, compareArrays)
+mSumm(5, 6, compareArrays)
+mSumm(5, 6, compareArrays)
+mSumm(5, 3, compareArrays)
