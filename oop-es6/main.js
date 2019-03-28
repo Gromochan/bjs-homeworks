@@ -65,3 +65,31 @@ log.getAverageBySubject("chemestry");
 log.getTotalAverage(log.getAverageBySubject.bind(log));
 log.getGradesBySubject("chemes");
 log.getGrades();
+
+
+class Stats {
+    constructor(playerClass) {
+        this.hp = hp;
+        this.mp = mp;
+        this.speed = speed;
+        this.attack = atttack;
+        this.agility = agility;
+        this.luck = luck;
+    }
+}
+class weapon {
+    constructor(weapon) {
+        this.name = weapon;
+        this.attack = attack;
+        this.durability = durability;
+        this.range = range;
+    }
+    takeDamage(damage) {
+        durability -= damageOnEnemy;
+        if (durability < 0) {
+
+            console.log("Оружие сломалось!")
+            return
+        }
+    }
+}
